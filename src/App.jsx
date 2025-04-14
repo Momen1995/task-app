@@ -1,10 +1,17 @@
-import React from 'react';
+import React from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import TaskBoards from "./components/TaskBoards/TaskBoards";
 
 const App = () => {
   return (
-    <div>
-      <h3 className='text-2xl'>Hello world</h3>
-    </div>
+    <>
+      <Header />
+      <main className="mt-2">
+        <TaskBoards />
+      </main>
+      <Footer />
+    </>
   );
 };
 
