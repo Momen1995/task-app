@@ -1,10 +1,15 @@
-const initialTask = {
-  id: 1,
-  status: "in-progress",
+export const initialTask = {
+  id: crypto.randomUUID(),
+  title: "Finish portfolio project",
+  status: "progress",
   priority: "high",
   tags: ["work", "urgent"],
   date: "2025-04-15",
   isDone: false,
 };
 
-export { initialTask };
+
+//date function
+export function formatDate(date) {
+  return new Intl.DateTimeFormat("en-GB").format(date);
+}
