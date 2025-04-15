@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TaskContext } from '../../context';
 
 const Anaylytic = () => {
+  const {tasks} = useContext(TaskContext)
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -11,7 +13,7 @@ const Anaylytic = () => {
               <i className="fas fa-tasks"></i>
             </div>
           </div>
-          <p className="text-3xl font-bold text-gray-900">0</p>
+          <p className="text-3xl font-bold text-gray-900">{tasks.length}</p>
         </div>
 
         <div className="bg-white shadow rounded-xl p-5 hover:shadow-md transition duration-300">

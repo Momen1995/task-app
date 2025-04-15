@@ -1,8 +1,8 @@
 export const initialTask = {
   id: crypto.randomUUID(),
-  title: "Finish portfolio project",
+  title: "Portfolio project",
   description:
-    "I love to this portfolio projectI love to this portfolio project ",
+    "I love to this portfolio project ",
   status: "Inprogress",
   priority: "high",
   tags: ["work", "urgent"],

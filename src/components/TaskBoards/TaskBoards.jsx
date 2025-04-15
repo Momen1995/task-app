@@ -3,10 +3,13 @@ import Anaylytic from "./Anaylytic";
 import SearchTask from "./SearchTask";
 import SortByTask from "./SortByTask";
 import TaskList from "./TaskList";
-
-import ModalTask from "./ModalTask";
+import { useContext } from "react";
+import { TaskContext } from "../../context";
+import NoTaskFound from "./NoTaskFound";
 
 const TaskBoards = () => {
+  const { tasks } = useContext(TaskContext);
+
   return (
     <>
       {/* {showModal && <ModalTask />} */}
@@ -22,7 +25,7 @@ const TaskBoards = () => {
       </section>
 
       <section className="overflow-x-auto mt-5">
-        <TaskList />
+        {tasks.length > 0 ? <TaskList /> : <NoTaskFound />}
       </section>
     </>
   );

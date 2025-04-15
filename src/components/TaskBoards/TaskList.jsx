@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
-import { TaskContext } from '../../context';
-import { formatDate } from '../../data/data';
+import React, { useContext } from "react";
+import { TaskContext } from "../../context";
+import { formatDate } from "../../data/data";
 
 const TaskList = () => {
-  const {tasks} = useContext(TaskContext);
-  console.log(tasks.description)
+  const { tasks, setTasks } = useContext(TaskContext);
+
+  //delete tasks
+  function handleDeleteTask(taskId) {
+    const filterTask = tasks.filter(task => task.id !== taskId);
+    setTasks(filterTask)
+  }
   return (
     <>
       <table className="min-w-full overflow-y-scroll h-32 bg-white rounded-xl shadow border-separate border-spacing-y-2 text-sm md:text-base">
@@ -59,7 +64,10 @@ const TaskList = () => {
                 <button className="text-xs bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">
                   <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-                <button className="text-xs bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">
+                <button
+                  onClick={() => handleDeleteTask(task.id)}
+                  className="text-xs bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+                >
                   <i class="fa-solid fa-trash-can"></i>
                 </button>
               </td>
