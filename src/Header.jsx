@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({ onShowModal }) => {
   return (
     <header className="flex flex-col md:flex-row justify-between items-center py-4">
       <div className="text-center md:text-left">
@@ -9,7 +9,10 @@ const Header = () => {
           Manage your tasks and projects efficiently.
         </p>
       </div>
-      <button className="mt-4 md:mt-0 bg-black text-white px-6 py-3 rounded-md text-lg md:text-xl hover:bg-gray-800 transition">
+      <button
+        onClick={onShowModal}
+        className="mt-4 md:mt-0 bg-black text-white px-6 py-3 rounded-md text-lg md:text-xl hover:bg-gray-800 transition"
+      >
         Add Task
       </button>
     </header>

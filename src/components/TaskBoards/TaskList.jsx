@@ -4,13 +4,14 @@ import { formatDate } from '../../data/data';
 
 const TaskList = () => {
   const {tasks} = useContext(TaskContext);
-
+  console.log(tasks.description)
   return (
     <>
-      <table className="min-w-full overflow-y-scroll h-28 bg-white rounded-xl shadow border-separate border-spacing-y-2 text-sm md:text-base">
+      <table className="min-w-full overflow-y-scroll h-32 bg-white rounded-xl shadow border-separate border-spacing-y-2 text-sm md:text-base">
         <thead className="bg-gray-500 text-white">
           <tr>
             <th className="px-4 py-3 text-left">Task</th>
+            <th className="px-4 py-3 text-left">Description</th>
             <th className="px-4 py-3 text-left">Status</th>
             <th className="px-4 py-3 text-left">Priority</th>
             <th className="px-4 py-3 text-left">Tags</th>
@@ -24,18 +25,30 @@ const TaskList = () => {
               key={task.id}
               className="bg-gray-50 hover:bg-gray-100 transition"
             >
-              <td className="px-4 py-3 rounded-l-lg">{task.title}</td>
+              <td className="px-4 py-3 rounded-l-lg text-[15px]">
+                {task.title}
+              </td>
+              <td className="px-4 py-3 max-w-xs md:max-w-sm lg:max-w-md">
+                <p className="truncate md:whitespace-normal text-gray-800 text-sm leading-relaxed">
+                  {task.description}
+                </p>
+              </td>
+
               <td className="px-4 py-3">
-                <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">
+                <span className="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full text-xs">
                   {task.status}
                 </span>
               </td>
-              <td className="px-4 py-3 font-medium text-red-500">High</td>
+              <td className="px-4 py-3 font-medium text-red-500">
+                {task.priority}
+              </td>
               <td className="px-4 py-3">
                 {task.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="bg-cyan-100 text-cyan-600 px-2 py-1 rounded-full text-xs"
+                    className={`${
+                      i % 2 !== 0 ? "bg-cyan-100" : "bg-yellow-100"
+                    } text-black ml-1 px-4 py-1 rounded-full text-xs`}
                   >
                     {tag}
                   </span>
@@ -43,10 +56,10 @@ const TaskList = () => {
               </td>
               <td className="px-4 py-3">{formatDate(new Date(task.date))}</td>
               <td className="px-4 py-3 rounded-r-lg space-x-2">
-                <button className="text-xs bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
+                <button className="text-xs bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">
                   <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-                <button className="text-xs bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                <button className="text-xs bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">
                   <i class="fa-solid fa-trash-can"></i>
                 </button>
               </td>
