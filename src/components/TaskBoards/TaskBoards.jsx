@@ -1,10 +1,13 @@
+import { useState } from "react";
 import AllTasks from "./AllTasks";
 import Anaylytic from "./Anaylytic";
 import SearchTask from "./SearchTask";
 import SortByTask from "./SortByTask";
 import TaskList from "./TaskList";
+import { initialTask } from "../../data/data";
 
 const TaskBoards = () => {
+  const [tasks, setTasks] = useState([initialTask]);
   return (
     <>
       <section className="flex flex-col md:flex-row gap-4 justify-between mt-6">
