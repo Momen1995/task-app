@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { TaskContext } from "../../context";
 import NoTaskFound from "./NoTaskFound";
 
-const TaskBoards = () => {
+const TaskBoards = ({ onEditTask }) => {
   const { tasks } = useContext(TaskContext);
 
   return (
@@ -25,7 +25,7 @@ const TaskBoards = () => {
       </section>
 
       <section className="overflow-x-auto mt-5">
-        {tasks.length > 0 ? <TaskList /> : <NoTaskFound />}
+        {tasks.length > 0 ? <TaskList onEditTask ={onEditTask}/> : <NoTaskFound />}
       </section>
     </>
   );

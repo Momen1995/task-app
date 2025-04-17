@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { TaskContext } from "../../context";
 import { formatDate } from "../../data/data";
 
-const TaskList = () => {
+const TaskList = ({ onEditTask }) => {
   const { tasks, setTasks } = useContext(TaskContext);
 
   //delete tasks
   function handleDeleteTask(taskId) {
-    const filterTask = tasks.filter(task => task.id !== taskId);
-    setTasks(filterTask)
+    const filterTask = tasks.filter((task) => task.id !== taskId);
+    setTasks(filterTask);
   }
   return (
     <>
@@ -61,7 +61,10 @@ const TaskList = () => {
               </td>
               <td className="px-4 py-3">{formatDate(new Date(task.date))}</td>
               <td className="px-4 py-3 rounded-r-lg space-x-2">
-                <button className="text-xs bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">
+                <button
+                  onClick={() => onEditTask(task)}
+                  className="text-xs bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600"
+                >
                   <i class="fa-solid fa-pen-to-square"></i>
                 </button>
                 <button
