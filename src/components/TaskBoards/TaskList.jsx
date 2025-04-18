@@ -65,13 +65,13 @@ const TaskList = ({ onEditTask }) => {
                   onClick={() => onEditTask(task)}
                   className="text-xs bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600"
                 >
-                  <i class="fa-solid fa-pen-to-square"></i>
+                  <i className="fa-solid fa-pen-to-square"></i>
                 </button>
                 <button
                   onClick={() => handleDeleteTask(task.id)}
                   className="text-xs bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
                 >
-                  <i class="fa-solid fa-trash-can"></i>
+                  <i className="fa-solid fa-trash-can"></i>
                 </button>
               </td>
             </tr>
