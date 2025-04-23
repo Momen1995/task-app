@@ -5,11 +5,21 @@ import { formatDate } from "../../data/data";
 const TaskList = ({ onEditTask }) => {
   const { tasks, setTasks } = useContext(TaskContext);
 
+  function handleTaskDone(e, taskId) {
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, isDone: e.target.checked } : task
+    );
+    setTasks(updatedTasks);
+  }
+
+
   //delete tasks
   function handleDeleteTask(taskId) {
     const filterTask = tasks.filter((task) => task.id !== taskId);
     setTasks(filterTask);
   }
+
+  console.log(tasks)
   return (
     <>
       <table className="min-w-full overflow-y-scroll h-32 bg-white rounded-xl shadow border-separate border-spacing-y-2 text-sm md:text-base">
@@ -30,9 +40,15 @@ const TaskList = ({ onEditTask }) => {
               key={task.id}
               className="bg-gray-50 hover:bg-gray-100 transition"
             >
-              <td className="px-4 py-3 rounded-l-lg text-[15px]">
+              <td className="px-4 py-3 rounded-l-lg text-[15px] flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  value={task.isDone}
+                  onChange={(e) => handleTaskDone(e, task.id)}
+                />
                 {task.title}
               </td>
+
               <td className="px-4 py-3 max-w-xs md:max-w-sm lg:max-w-md">
                 <p className="truncate md:whitespace-normal text-gray-800 text-sm leading-relaxed">
                   {task.description}
@@ -41,7 +57,7 @@ const TaskList = ({ onEditTask }) => {
 
               <td className="px-4 py-3">
                 <span className="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full text-xs">
-                  {task.status}
+                  {task.isDone ? "Done" : task.status}
                 </span>
               </td>
               <td className="px-4 py-3 font-medium text-red-500">
