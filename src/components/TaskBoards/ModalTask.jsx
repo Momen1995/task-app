@@ -139,7 +139,7 @@ const ModalTask = ({ onCloseModal }) => {
                 required
               >
                 <option value="">Select Status</option>
-                <option value="To DO">To Do</option>
+                <option value="To do">To Do</option>
                 <option value="Inprogress">Inprogress</option>
                 <option value="Review">Review</option>
                 <option value="Done">Done</option>

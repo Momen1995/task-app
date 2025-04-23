@@ -2,7 +2,11 @@ import React, { useContext } from 'react';
 import { TaskContext } from '../../context';
 
 const Anaylytic = () => {
-  const {tasks} = useContext(TaskContext)
+  const {tasks} = useContext(TaskContext);
+
+  const progressTask = tasks.filter(task => task.status.toLowerCase() === "inprogress");
+
+
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -33,7 +37,7 @@ const Anaylytic = () => {
               <i className="fas fa-spinner animate-spin"></i>
             </div>
           </div>
-          <p className="text-3xl font-bold text-gray-900">0</p>
+          <p className="text-3xl font-bold text-gray-900">{progressTask.length}</p>
         </div>
 
         <div className="bg-white shadow rounded-xl p-5 hover:shadow-md transition duration-300">
